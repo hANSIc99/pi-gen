@@ -1,0 +1,17 @@
+# Show devices
+
+lsblk -p
+
+# Unmount partiions (if mounted)
+
+umount /dev/sdc1
+
+# Write image to SD
+
+dd if=<image-name> of=/dev/sdc bs=4M conv=fsync
+
+# Of blocksize of 4 dont work, try with bs=1
+
+# bs=32M testen
+
+

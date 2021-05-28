@@ -85,18 +85,24 @@ export -f umount_qimage
 # create base image / backing image / mount image
 load_qimage() {
 	if [ -z "${CURRENT_MOUNTPOINT}" ]; then
+
 		if [ ! -d "${ROOTFS_DIR}" ]; then
+
 			mkdir -p "${ROOTFS_DIR}";
 		fi
-
+		
 		if [ "${CLEAN}" = "1" ] && [ -f "${WORK_DIR}/image-${STAGE}.qcow2" ]; then
+
 			rm -f "${WORK_DIR}/image-${STAGE}.qcow2";
 		fi
 
 		if [ ! -f "${WORK_DIR}/image-${STAGE}.qcow2" ]; then
 			pushd ${WORK_DIR} > /dev/null
+
 			init_nbd
+
 			if [ -z "${PREV_STAGE}" ]; then
+
 				echo "Creating base image: image-${STAGE}.qcow2"
 				#  -o preallocation=falloc
 				qemu-img create -f qcow2 image-${STAGE}.qcow2 $BASE_QCOW2_SIZE

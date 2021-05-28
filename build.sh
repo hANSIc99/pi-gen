@@ -98,9 +98,9 @@ run_stage(){
 
 	STAGE_WORK_DIR="${WORK_DIR}/${STAGE}"
 	ROOTFS_DIR="${STAGE_WORK_DIR}"/rootfs
-
 	if [ "${USE_QCOW2}" = "1" ]; then 
 		if [ ! -f SKIP ]; then
+			log "LOAD_IMAGE"
 			load_qimage
 		fi
 	else
@@ -109,12 +109,12 @@ run_stage(){
 			unmount "${WORK_DIR}/${STAGE}"
 		fi
 	fi
-	
 	if [ ! -f SKIP_IMAGES ]; then
 		if [ -f "${STAGE_DIR}/EXPORT_IMAGE" ]; then
 			EXPORT_DIRS="${EXPORT_DIRS} ${STAGE_DIR}"
 		fi
 	fi
+	
 	if [ ! -f SKIP ]; then
 		if [ "${CLEAN}" = "1" ] && [ "${USE_QCOW2}" = "0" ] ; then
 			if [ -d "${ROOTFS_DIR}" ]; then
@@ -175,7 +175,10 @@ do
 	esac
 done
 
+
+
 term() {
+	
 	if [ "${USE_QCOW2}" = "1" ]; then
 		log "Unloading image"
 		unload_qimage
@@ -295,6 +298,7 @@ STAGE_LIST=${STAGE_LIST:-${BASE_DIR}/stage*}
 for STAGE_DIR in $STAGE_LIST; do
 	STAGE_DIR=$(realpath "${STAGE_DIR}")
 	run_stage
+	log "Run stage done"
 done
 
 CLEAN=1
