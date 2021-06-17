@@ -6,10 +6,10 @@ install -v -m 655 files/ms-python.vscode-pylance-2020.12.2.vsix "${ROOTFS_DIR}/"
 install -v -m 655 files/ms-python-release.vsix "${ROOTFS_DIR}/"
 
 on_chroot << EOF
-#curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-#apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+apt-get install -y nodejs
 
-#curl -fsSL https://code-server.dev/install.sh | sh
+curl -fsSL https://code-server.dev/install.sh | sh
 
 mkdir -p /home/pythonic/.config/code-server
 mkdir -p /home/pythonic/.local/share/code-server
