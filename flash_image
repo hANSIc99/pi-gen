@@ -8,7 +8,7 @@ umount /dev/sdc1
 
 # Write image to SD
 
-dd if=<image-name> of=/dev/sdc bs=4M conv=fsync
+dd if=<image-name> of=/dev/sdc bs=32M conv=fsync
 
 # Of blocksize of 4 dont work, try with bs=1
 

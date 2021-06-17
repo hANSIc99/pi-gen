@@ -2,3 +2,4 @@ IMG_NAME='Pythonic'
 FIRST_USER_NAME='pythonic'
 FIRST_USER_PASS='guetersloh'
 ENABLE_SSH=1
+TARGET_HOSTNAME='PythonicRPI'
